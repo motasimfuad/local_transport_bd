@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "9243618958",
+    "project_id": "local-transport-bd",
+    "storage_bucket": "local-transport-bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9243618958:android:fe6fb99286ea119b47a3df",
+        "android_client_info": {
+          "package_name": "com.example.local_transport_bd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9243618958-jbqsphmgo3o296lmm1nbsfggaiolro61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwK1Sl-4O_ghF3TdS3zePxYBaMY4LyjNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9243618958-jbqsphmgo3o296lmm1nbsfggaiolro61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
