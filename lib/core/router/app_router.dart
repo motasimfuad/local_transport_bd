@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:local_transport_bd/features/home/presentation/pages/home_page.dart';
+import 'package:local_transport_bd/bottom_nav.dart';
 
 class AppRouter {
   static const String homePage = '/';
@@ -21,7 +21,7 @@ final router = GoRouter(
       pageBuilder: (context, state) {
         return MaterialPage(
           key: state.pageKey,
-          child: const HomePage(),
+          child: const BottomNav(),
         );
       },
     ),
