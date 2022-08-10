@@ -7,9 +7,6 @@ class AppTheme {
   static final lightTheme = ThemeData(
     primarySwatch: KColors.primary,
     canvasColor: Colors.white,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.brown.shade50,
-    ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 }
