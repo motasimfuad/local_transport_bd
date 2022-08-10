@@ -120,10 +120,12 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
                   KSingleLocationSelectField(
                     icon: Icons.my_location_outlined,
                     items: widget.areas,
+                    hintText: 'Location',
                     controller: widget.locationController,
                   ),
                   SizedBox(height: 15.w),
                   KSingleLocationSelectField(
+                    hintText: 'Destination',
                     icon: Icons.location_on_rounded,
                     items: widget.areas,
                     controller: widget.destinationController,
