@@ -33,10 +33,10 @@ class KSearchField extends StatelessWidget {
       suggestions: items.map((e) => SearchFieldListItem(e)).toList(),
       suggestionState: Suggestion.hidden,
       textInputAction: TextInputAction.next,
-      hint: 'SearchField Example 2',
+      hint: hintText,
       hasOverlay: true,
       searchStyle: TextStyle(
-        fontSize: 18,
+        fontSize: 17.sp,
         color: Colors.black.withOpacity(0.8),
       ),
       validator: (x) {
@@ -53,14 +53,14 @@ class KSearchField extends StatelessWidget {
         //     color: Colors.black.withOpacity(0.8),
         //   ),
         // ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-        ),
+        // border: OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //     color: Colors.red,
+        //   ),
+        // ),
       ),
       maxSuggestionsInViewPort: 6,
-      itemHeight: 50,
-      onSuggestionTap: (p0) {},
-      // onTap: (x) {},
+      itemHeight: 50.h,
     );
   }
 }

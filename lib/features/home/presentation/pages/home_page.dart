@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:local_transport_bd/core/constants/colors.dart';
 import 'package:local_transport_bd/core/widgets/k_fab.dart';
-import 'package:local_transport_bd/core/widgets/k_searchfield.dart';
+
+import '../../../../core/constants/constants.dart';
+import '../../../search_route/presentation/widgets/k_location_select_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
 
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: KColors.primary.shade50,
       appBar: AppBar(
         title: const Text('home'),
       ),
@@ -80,27 +79,10 @@ class _HomePageState extends State<HomePage> {
             Container(
               color: Colors.red,
             ),
-            Container(
-              // color: KColors.primary,
-              child: Padding(
-                padding: EdgeInsets.all(15.w),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      KLocationSelectField(
-                        icon: Icons.my_location_outlined,
-                        items: _areas,
-                        controller: _locationController,
-                      ),
-                      // SizedBox(height: 15.w),
-                      // const KLocationSelectField(
-                      //   icon: Icons.location_on_rounded,
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
+            KLocationSelectWidget(
+              areas: _areas,
+              locationController: _locationController,
+              destinationController: _destinationController,
             ),
             SizedBox(
               height: 55.h,
@@ -108,45 +90,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class KLocationSelectField extends StatelessWidget {
-  final IconData? icon;
-  final List items;
-  final TextEditingController controller;
-  const KLocationSelectField({
-    Key? key,
-    this.icon,
-    required this.items,
-    required this.controller,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: KColors.primary,
-        ),
-        SizedBox(width: 10.w),
-        Expanded(
-          child: KSearchField(
-            hintText: '',
-            items: items,
-            controller: controller,
-          ),
-        ),
-        // Expanded(
-        //   child: KTextField(
-        //     bgColor: Colors.grey.shade100,
-        //     bottomPadding: 0,
-        //   ),
-        // ),
-      ],
     );
   }
 }

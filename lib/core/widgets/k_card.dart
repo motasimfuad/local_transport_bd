@@ -62,7 +62,7 @@ class KCard extends StatelessWidget {
           horizontal: xMargin ?? 0.0,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius ?? 26.r),
+          borderRadius: BorderRadius.circular(radius ?? 23.r),
           color: color ?? KColors.primary.shade200,
           border: hasBorder == true
               ? Border.all(
@@ -82,7 +82,8 @@ class KCard extends StatelessWidget {
               : null,
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius:
+              BorderRadius.circular(radius != null ? (radius! - 3) : 20.r),
           clipBehavior: Clip.antiAlias,
           child: child ??
               Text(
