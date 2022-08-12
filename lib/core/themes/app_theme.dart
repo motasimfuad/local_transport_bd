@@ -8,5 +8,6 @@ class AppTheme {
     primarySwatch: KColors.primary,
     canvasColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
+    fontFamily: 'Poppins',
   );
 }

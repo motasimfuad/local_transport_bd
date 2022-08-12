@@ -102,7 +102,7 @@ class KTextField extends StatelessWidget {
               fillColor: bgColor ?? KColors.primary,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 18.w,
-                vertical: 16.h,
+                vertical: 16.w,
               ),
               suffixIcon: suffixIcon != null
                   ? GestureDetector(

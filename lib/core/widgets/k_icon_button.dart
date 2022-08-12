@@ -9,6 +9,7 @@ class KIconButton extends StatelessWidget {
   final Color? iconColor;
   final Color? bgColor;
   final Function()? onPressed;
+  final double? radius;
   final Widget? child;
   const KIconButton({
     Key? key,
@@ -16,18 +17,19 @@ class KIconButton extends StatelessWidget {
     this.iconColor,
     this.bgColor,
     this.onPressed,
+    this.radius,
     this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return KCard(
-      yPadding: 6.w,
-      xPadding: 6.w,
+      yPadding: 8.w,
+      xPadding: 8.w,
       hasShadow: false,
       onTap: onPressed,
       color: bgColor ?? KColors.primary.shade400,
-      radius: 10.r,
+      radius: radius ?? 10.r,
       child: child != null
           ? SizedBox(
               height: 20.w,

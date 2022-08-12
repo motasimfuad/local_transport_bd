@@ -27,25 +27,27 @@ class _KSingleLocationSelectFieldState
   @override
   Widget build(BuildContext context) {
     return KCard(
-      color: KColors.primary.shade50,
-      xPadding: 12.w,
+      color: KColors.primary.shade50.withOpacity(0.9),
+      xPadding: 5.w,
       yPadding: 0.w,
       hasShadow: false,
-      radius: 16.r,
+      radius: 18.r,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(
-            widget.icon,
-            size: 18.w,
-            color: KColors.primary,
-          ),
-          SizedBox(width: 10.w),
+          // Icon(
+          //   widget.icon,
+          //   size: 18.w,
+          //   color: KColors.primary,
+          // ),
+          // SizedBox(width: 10.w),
           Expanded(
             child: KSearchField(
               hintText: widget.hintText ?? '',
               items: widget.items,
+              icon: widget.icon,
               controller: widget.controller,
+              goNextOnSelect: true,
               showClearIcon: widget.controller.text.isNotEmpty,
               onSuffixIconTap: () {
                 widget.controller.clear();

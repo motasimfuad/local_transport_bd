@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:local_transport_bd/core/widgets/k_fab.dart';
+import 'package:local_transport_bd/core/widgets/k_card.dart';
+import 'package:local_transport_bd/core/widgets/k_icon_button.dart';
+import 'package:local_transport_bd/core/widgets/k_searchfield.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../search_route/presentation/widgets/k_location_select_widget.dart';
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
 
   // list of 30 local area name in dhaka city
   final List<String> _areas = [
@@ -64,30 +66,60 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: KColors.primary.shade50,
-      appBar: AppBar(
-        title: const Text('home'),
-      ),
-      floatingActionButton: KFab(
-          label: 'hi',
-          onPressed: () {
-            print(_locationController.text);
-          }),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.red,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height - 40.w,
+            padding: EdgeInsets.symmetric(
+              vertical: 10.w,
+              horizontal: 20.w,
             ),
-            KLocationSelectWidget(
-              areas: _areas,
-              locationController: _locationController,
-              destinationController: _destinationController,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    KCard(
+                      xPadding: 0,
+                      yPadding: 0,
+                      width: 200.w,
+                      hasShadow: false,
+                      color: KColors.primary.withOpacity(0.0),
+                      child: KSearchField(
+                        items: _areas,
+                        hintText: 'City',
+                        controller: _cityController,
+                      ),
+                    ),
+                    KIconButton(
+                      icon: Icons.settings,
+                      bgColor: KColors.primary.withOpacity(0.1),
+                      onPressed: () {
+                        print('Setting');
+                      },
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 0.h),
+                  child: Column(
+                    children: [
+                      KLocationSelectWidget(
+                        areas: _areas,
+                        locationController: _locationController,
+                        destinationController: _destinationController,
+                        cityController: _cityController,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              height: 55.h,
-            ),
-          ],
+          ),
         ),
       ),
     );

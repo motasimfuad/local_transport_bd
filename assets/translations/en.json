@@ -1,3 +1,7 @@
 {
+  "label": {
+    "destination": "Destination",
+    "location": "Location"
+  },
   "username": "Fuad"
 }
