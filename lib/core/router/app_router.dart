@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:local_transport_bd/features/home/presentation/pages/home_page.dart';
+import 'package:local_transport_bd/features/search_route/presentation/pages/search_result_page.dart';
 
 class AppRouter {
   static const String homePage = '/';
-  static const String allProductsPage = 'products';
+  static const String searchResultPage = '/search-route';
 }
 
 class RouterParams {
@@ -15,6 +16,7 @@ final router = GoRouter(
   urlPathStrategy: UrlPathStrategy.path,
   initialLocation: AppRouter.homePage,
   routes: [
+    // home page
     GoRoute(
       name: AppRouter.homePage,
       path: AppRouter.homePage,
@@ -22,6 +24,18 @@ final router = GoRouter(
         return MaterialPage(
           key: state.pageKey,
           child: const HomePage(),
+        );
+      },
+    ),
+
+    // search result page
+    GoRoute(
+      name: AppRouter.searchResultPage,
+      path: AppRouter.searchResultPage,
+      pageBuilder: (context, state) {
+        return MaterialPage(
+          key: state.pageKey,
+          child: const SearchResultPage(),
         );
       },
     ),

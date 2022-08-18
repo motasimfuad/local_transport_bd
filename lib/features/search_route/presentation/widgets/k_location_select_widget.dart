@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import 'package:local_transport_bd/core/widgets/k_icon_button.dart';
 import 'package:local_transport_bd/l10n/locale_keys.g.dart';
 
@@ -12,12 +13,14 @@ class KLocationSelectWidget extends StatefulWidget {
   final TextEditingController locationController;
   final TextEditingController destinationController;
   final TextEditingController cityController;
+  final Function() onLocationBtnTap;
   const KLocationSelectWidget({
     Key? key,
     required this.areas,
     required this.locationController,
     required this.destinationController,
     required this.cityController,
+    required this.onLocationBtnTap,
   }) : super(key: key);
 
   @override
@@ -136,14 +139,15 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
                     icon: Icons.search,
                     bgColor: KColors.primary.shade400,
                     radius: 15.r,
-                    onPressed: () {
-                      checkFields();
-                      if (hasData) {
-                        print('has data');
-                      } else {
-                        print('no data');
-                      }
-                    },
+                    onPressed: widget.onLocationBtnTap,
+                    // onPressed:() {
+                    //   checkFields();
+                    //   if (hasData) {
+                    //     print('has data');
+                    //   } else {
+                    //     print('no data');
+                    //   }
+                    // },
                   ),
                 ),
               ],
@@ -176,26 +180,6 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
                     items: widget.areas,
                     controller: widget.destinationController,
                   ),
-                  // SizedBox(height: 20.w),
-                  // Row(
-                  //   children: [
-                  //     Expanded(child: Container()),
-                  //     // const Expanded(
-                  //     //   child: KIconButton(),
-                  //     //   // child: KPrimaryButton(
-                  //     //   //   text: 'Check Buses',
-                  //     //   //   // btnColor: KColors.primary.shade200,
-                  //     //   //   btnHeight: 45.w,
-                  //     //   //   onPressed: () {},
-                  //     //   // ),
-                  //     // ),
-                  //     const KIconButton(
-                  //       bgColor: KColors.primary,
-                  //       icon: Icons.search,
-                  //       iconColor: Colors.white,
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),

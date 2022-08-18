@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_transport_bd/core/router/app_router.dart';
 import 'package:local_transport_bd/core/widgets/k_card.dart';
 import 'package:local_transport_bd/core/widgets/k_icon_button.dart';
 import 'package:local_transport_bd/core/widgets/k_searchfield.dart';
@@ -70,14 +71,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: KColors.primary.shade50,
       body: SafeArea(
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Container(
             height: MediaQuery.of(context).size.height - 40.w,
-            padding: EdgeInsets.symmetric(
-              vertical: 10.w,
-              horizontal: 20.w,
+            padding: EdgeInsets.only(
+              top: 10.w,
+              left: 20.w,
+              right: 20.w,
+              bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -113,6 +117,9 @@ class _HomePageState extends State<HomePage> {
                         locationController: _locationController,
                         destinationController: _destinationController,
                         cityController: _cityController,
+                        onLocationBtnTap: () {
+                          router.pushNamed(AppRouter.searchResultPage);
+                        },
                       ),
                     ],
                   ),

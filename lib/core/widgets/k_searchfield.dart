@@ -67,12 +67,12 @@ class KSearchField extends StatelessWidget {
         ),
       ),
       suggestionsDecoration: BoxDecoration(
-        color: KColors.primary.shade100.withOpacity(.8),
+        color: KColors.primary.shade100.withOpacity(.9),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             blurRadius: 8.r,
-            spreadRadius: 2.r,
+            spreadRadius: 3.r,
             offset: const Offset(
               2.0,
               4.0,
@@ -82,7 +82,9 @@ class KSearchField extends StatelessWidget {
       ),
       suggestions: items.map((e) => SearchFieldListItem(e)).toList(),
       suggestionState: Suggestion.hidden,
-      textInputAction: TextInputAction.next,
+      textInputAction: TextInputAction.done,
+      autoCorrect: true,
+      marginColor: Colors.transparent,
       hint: hintText,
       hasOverlay: true,
       searchStyle: TextStyle(
