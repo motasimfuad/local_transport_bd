@@ -73,245 +73,121 @@ class _SearchResultPageState extends State<SearchResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: KColors.primary.shade100,
-        // appBar: const KAppbar(
-        //   title: 'Search Result',
-        // ),
-
-        body: SafeArea(
-          child: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return [
-                SliverAppBar(
-                  pinned: true,
-                  centerTitle: true,
-                  title: LocationToDestinationWidget(
-                    isLightVersion: innerBoxIsScrolled ? true : false,
-                    isFlexible: true,
-                    textSize: 18.sp,
-                    textColor: innerBoxIsScrolled
-                        ? KColors.primary.shade100
-                        : KColors.primary,
-                    locationName: 'Dhaka',
-                    destinationName: 'Sylhet',
-                  ),
-                  // expandedHeight: MediaQuery.of(context).size.height * 0.3,
-                  toolbarHeight: 55.w,
-                  expandedHeight: 290.w,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: Container(
-                      color: KColors.primary.shade100,
-                      padding: EdgeInsets.only(
-                        left: 20.w,
-                        right: 20.w,
-                        top: 50.w,
-                        bottom: 10.w,
-                      ),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            child: KLocationSelectWidget(
-                              areas: _areas,
-                              locationController: _locationController,
-                              destinationController: _destinationController,
-                              cityController: _cityController,
-                              onLocationBtnTap: () {
-                                // router.pushNamed(AppRouter.searchResultPage);
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+      backgroundColor: KColors.primary.shade100,
+      body: SafeArea(
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                pinned: true,
+                centerTitle: true,
+                title: LocationToDestinationWidget(
+                  isLightVersion: innerBoxIsScrolled ? true : false,
+                  isFlexible: true,
+                  textSize: 18.sp,
+                  textColor: innerBoxIsScrolled
+                      ? KColors.primary.shade100
+                      : KColors.primary.shade700,
+                  locationName: 'Dhaka',
+                  destinationName: 'Sylhet',
                 ),
-              ];
-            },
-            body: CustomScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              slivers: [
-                // SliverPersistentHeader(
-                //   delegate: KSliverHeaderDelegate(
-                //     maxExtentHeight: 250.w,
-                //     child: Container(
-                //       color: KColors.primary.shade100,
-                //       padding: EdgeInsets.only(
-                //         left: 20.w,
-                //         right: 20.w,
-                //         top: 10.w,
-                //         // bottom: 10.w,
-                //       ),
-                //       child: KLocationSelectWidget(
-                //         areas: _areas,
-                //         locationController: _locationController,
-                //         destinationController: _destinationController,
-                //         cityController: _cityController,
-                //         onLocationBtnTap: () {
-                //           // router.pushNamed(AppRouter.searchResultPage);
-                //         },
-                //       ),
-                //     ),
-                //   ),
-                // ),
-
-                // rest of the body
-                SliverToBoxAdapter(
-                  child: Container(
-                    height: 40.w,
-                    decoration: BoxDecoration(
-                      color: KColors.primary.shade50,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25.w),
-                        topRight: Radius.circular(25.w),
-                      ),
+                toolbarHeight: 55.w,
+                expandedHeight: 285.w,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Container(
+                    color: KColors.primary.shade100,
+                    padding: EdgeInsets.only(
+                      left: 20.w,
+                      right: 20.w,
+                      top: 50.w,
+                      bottom: 10.w,
                     ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Stack(
+                      alignment: Alignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 22.w,
-                            // top: 5.w,
-                            // bottom: 5.w,
-                          ),
-                          child: Text(
-                            '10 Results found',
-                            style: TextStyle(
-                              color: KColors.primary.shade400,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.italic,
-                            ),
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          child: KLocationSelectWidget(
+                            areas: _areas,
+                            locationController: _locationController,
+                            destinationController: _destinationController,
+                            cityController: _cityController,
+                            onLocationBtnTap: () {
+                              // router.pushNamed(AppRouter.searchResultPage);
+                            },
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: Container(
-                    color: KColors.background,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      padding: EdgeInsets.only(
-                        left: 15.w,
-                        right: 15.w,
-                        // top: 15.w,
-                        bottom: 15.w,
-                      ),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        mainAxisExtent: 120.w,
-                        crossAxisSpacing: 15.w,
-                        mainAxisSpacing: 15.w,
-                      ),
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        return const BusItem();
-                      },
+              ),
+            ];
+          },
+          body: CustomScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            slivers: [
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 40.w,
+                  decoration: BoxDecoration(
+                    color: KColors.primary.shade50,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25.w),
+                      topRight: Radius.circular(25.w),
                     ),
                   ),
-                )
-              ],
-            ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 22.w,
+                        ),
+                        child: Text(
+                          '10 Results found',
+                          style: TextStyle(
+                            color: KColors.primary.shade400,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  color: KColors.background,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    primary: false,
+                    padding: EdgeInsets.only(
+                      left: 15.w,
+                      right: 15.w,
+                      bottom: 15.w,
+                    ),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      mainAxisExtent: 120.w,
+                      crossAxisSpacing: 15.w,
+                      mainAxisSpacing: 15.w,
+                    ),
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                      return const BusItem();
+                    },
+                  ),
+                ),
+              )
+            ],
           ),
-        )
-        // body: Column(
-        //   children: [
-        //     Stack(
-        //       children: [
-        //         Container(
-        //           // height: 125.w,
-        //           padding: EdgeInsets.only(
-        //             bottom: 45.w,
-        //             left: 20.w,
-        //             right: 20.w,
-        //             top: 5.w,
-        //           ),
-        //           color: KColors.primary.shade100,
-        //           child: KLocationSelectWidget(
-        //             areas: _areas,
-        //             locationController: _locationController,
-        //             destinationController: _destinationController,
-        //             cityController: _cityController,
-        //             onLocationBtnTap: () {
-        //               // router.pushNamed(AppRouter.searchResultPage);
-        //             },
-        //           ),
-        //           // child: const Center(
-        //           //   child: LocationToDestinationWidget(
-        //           //     isHeader: true,
-        //           //     locationName: 'Dhaka',
-        //           //     destinationName: 'Sylhet',
-        //           //   ),
-        //           // ),
-        //         ),
-        //         Positioned(
-        //           bottom: -5,
-        //           left: 0,
-        //           right: 0,
-        //           child: Container(
-        //             height: 45.w,
-        //             decoration: BoxDecoration(
-        //               color: KColors.background,
-        //               borderRadius: BorderRadius.only(
-        //                 topLeft: Radius.circular(25.w),
-        //                 topRight: Radius.circular(25.w),
-        //               ),
-        //             ),
-        //             child: Row(
-        //               crossAxisAlignment: CrossAxisAlignment.center,
-        //               children: [
-        //                 Padding(
-        //                   padding: EdgeInsets.only(
-        //                     left: 22.w,
-        //                     // top: 5.w,
-        //                     // bottom: 5.w,
-        //                   ),
-        //                   child: Text(
-        //                     '10 Results found',
-        //                     style: TextStyle(
-        //                       color: KColors.primary.shade400,
-        //                       fontSize: 14.sp,
-        //                       fontWeight: FontWeight.w400,
-        //                       fontStyle: FontStyle.italic,
-        //                     ),
-        //                   ),
-        //                 ),
-        //               ],
-        //             ),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //     Expanded(
-        //       child: GridView.builder(
-        //         padding: EdgeInsets.only(
-        //           left: 15.w,
-        //           right: 15.w,
-        //           top: 15.w,
-        //           bottom: 15.w,
-        //         ),
-        //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //           crossAxisCount: 1,
-        //           mainAxisExtent: 120.w,
-        //           crossAxisSpacing: 15.w,
-        //           mainAxisSpacing: 15.w,
-        //         ),
-        //         itemCount: 10,
-        //         itemBuilder: (BuildContext context, int index) {
-        //           return const BusItem();
-        //         },
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        );
+        ),
+      ),
+    );
   }
 }
 
