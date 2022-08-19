@@ -32,33 +32,20 @@ class _KSingleLocationSelectFieldState
       yPadding: 0.w,
       hasShadow: false,
       radius: 18.r,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // Icon(
-          //   widget.icon,
-          //   size: 18.w,
-          //   color: KColors.primary,
-          // ),
-          // SizedBox(width: 10.w),
-          Expanded(
-            child: KSearchField(
-              hintText: widget.hintText ?? '',
-              items: widget.items,
-              icon: widget.icon,
-              controller: widget.controller,
-              goNextOnSelect: true,
-              showClearIcon: widget.controller.text.isNotEmpty,
-              onSuffixIconTap: () {
-                widget.controller.clear();
-                setState(() {});
-              },
-              onSuggestionTap: (p0) {
-                setState(() {});
-              },
-            ),
-          ),
-        ],
+      child: KSearchField(
+        hintText: widget.hintText ?? '',
+        items: widget.items,
+        icon: widget.icon,
+        controller: widget.controller,
+        goNextOnSelect: true,
+        showClearIcon: widget.controller.text.isNotEmpty,
+        onSuffixIconTap: () {
+          widget.controller.clear();
+          setState(() {});
+        },
+        onSuggestionTap: (p0) {
+          setState(() {});
+        },
       ),
     );
   }

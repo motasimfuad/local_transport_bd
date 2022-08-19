@@ -75,6 +75,9 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
       yPadding: 0,
       xMargin: 0,
       yMargin: 10.w,
+      // hasBorder: true,
+      borderColor: KColors.primary,
+      borderWidth: 1,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,7 +89,6 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
             hasShadow: false,
             yMargin: 0,
             xMargin: 0,
-            // color: KColors.primary.shade500,
             color: KColors.primary,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

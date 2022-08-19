@@ -13,7 +13,7 @@ class KColors {
   static const secondaryLight = Color(0xff383b4e);
   static const secondaryDark = Color(0xff292b38);
 
-  static const background = Color(0xff333547);
+  static final background = primary.shade50;
 
   static const primary = Colors.deepPurple;
   static final primaryDark = primary.shade700;

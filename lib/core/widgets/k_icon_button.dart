@@ -10,6 +10,7 @@ class KIconButton extends StatelessWidget {
   final Color? bgColor;
   final Function()? onPressed;
   final double? radius;
+  final double? size;
   final Widget? child;
   const KIconButton({
     Key? key,
@@ -18,6 +19,7 @@ class KIconButton extends StatelessWidget {
     this.bgColor,
     this.onPressed,
     this.radius,
+    this.size,
     this.child,
   }) : super(key: key);
 
@@ -39,7 +41,7 @@ class KIconButton extends StatelessWidget {
           : Icon(
               icon ?? Icons.send_rounded,
               color: iconColor ?? KColors.primary.shade700,
-              size: 20.w,
+              size: size ?? 20.w,
             ),
     );
   }
