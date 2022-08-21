@@ -7,6 +7,7 @@ import 'package:local_transport_bd/features/transport/domain/entities/transport_
 import '../../../../core/constants/enums.dart';
 
 class TransportModel extends TransportEntity {
+  final String uid;
   final String cityId;
   final TransportType transportType;
   final String english;
@@ -17,6 +18,7 @@ class TransportModel extends TransportEntity {
   final String? serviceType;
 
   const TransportModel({
+    required this.uid,
     required this.cityId,
     required this.transportType,
     required this.english,
@@ -26,6 +28,7 @@ class TransportModel extends TransportEntity {
     this.time,
     this.serviceType,
   }) : super(
+          uid: uid,
           cityId: cityId,
           transportType: transportType,
           english: english,
@@ -37,6 +40,7 @@ class TransportModel extends TransportEntity {
         );
 
   TransportModel copyWith({
+    String? uid,
     String? cityId,
     TransportType? transportType,
     String? english,
@@ -47,6 +51,7 @@ class TransportModel extends TransportEntity {
     String? serviceType,
   }) =>
       TransportModel(
+        uid: uid ?? this.uid,
         cityId: cityId ?? this.cityId,
         transportType: transportType ?? this.transportType,
         english: english ?? this.english,
@@ -63,6 +68,7 @@ class TransportModel extends TransportEntity {
   String toJson() => json.encode(toMap());
 
   factory TransportModel.fromMap(Map<String, dynamic> json) => TransportModel(
+        uid: json["uid"],
         cityId: json["city_id"],
         transportType: json["transport_type"],
         english: json["english"],
@@ -74,6 +80,7 @@ class TransportModel extends TransportEntity {
       );
 
   Map<String, dynamic> toMap() => {
+        "uid": uid,
         "city_id": cityId,
         "transport_type": transportType,
         "english": english,

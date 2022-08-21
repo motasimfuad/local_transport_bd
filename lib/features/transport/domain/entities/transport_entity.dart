@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:local_transport_bd/core/constants/enums.dart';
 
 class TransportEntity extends Equatable {
+  final String uid;
   final String cityId;
   final TransportType transportType;
   final String english;
@@ -12,6 +13,7 @@ class TransportEntity extends Equatable {
   final String? serviceType;
 
   const TransportEntity({
+    required this.uid,
     required this.cityId,
     required this.transportType,
     required this.english,
