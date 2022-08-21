@@ -6,6 +6,7 @@ import 'package:local_transport_bd/core/widgets/k_searchfield.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../search_route/presentation/widgets/k_location_select_widget.dart';
+import '../widgets/home_page_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
@@ -67,8 +69,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       extendBody: true,
       backgroundColor: KColors.background,
+      drawer: const HomePageDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -100,10 +104,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     KIconButton(
-                      icon: Icons.settings,
+                      icon: Icons.menu_open_rounded,
                       bgColor: KColors.primary.withOpacity(0.1),
                       onPressed: () {
-                        print('Setting');
+                        scaffoldKey.currentState?.openDrawer();
                       },
                     ),
                   ],

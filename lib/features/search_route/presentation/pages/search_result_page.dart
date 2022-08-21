@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:local_transport_bd/core/constants/constants.dart';
+import 'package:local_transport_bd/core/router/app_router.dart';
 import 'package:local_transport_bd/core/widgets/k_badge.dart';
 import 'package:local_transport_bd/core/widgets/k_card.dart';
 import 'package:local_transport_bd/core/widgets/k_icon_button.dart';
@@ -242,6 +243,14 @@ class BusItem extends StatelessWidget {
                   icon: Icons.arrow_forward_ios_rounded,
                   iconColor: Colors.white,
                   size: 15.w,
+                  onPressed: () {
+                    router.pushNamed(
+                      AppRouter.transportDetailPage,
+                      params: {
+                        RouterParams.id: 1.toString(),
+                      },
+                    );
+                  },
                 )
               ],
             ),
