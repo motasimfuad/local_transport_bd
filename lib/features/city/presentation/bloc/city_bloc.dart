@@ -6,8 +6,6 @@ part 'city_state.dart';
 
 class CityBloc extends Bloc<CityEvent, CityState> {
   CityBloc() : super(CityInitial()) {
-    on<CityEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<CityEvent>((event, emit) async {});
   }
 }

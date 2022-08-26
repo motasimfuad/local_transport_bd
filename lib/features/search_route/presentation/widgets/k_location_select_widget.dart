@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import 'package:local_transport_bd/core/constants/enums.dart';
 import 'package:local_transport_bd/core/widgets/k_icon_button.dart';
 import 'package:local_transport_bd/l10n/locale_keys.g.dart';
 
@@ -13,6 +14,7 @@ class KLocationSelectWidget extends StatefulWidget {
   final TextEditingController locationController;
   final TextEditingController destinationController;
   final TextEditingController cityController;
+  final TransportType? transportType;
   final Function() onLocationBtnTap;
   const KLocationSelectWidget({
     Key? key,
@@ -21,6 +23,7 @@ class KLocationSelectWidget extends StatefulWidget {
     required this.destinationController,
     required this.cityController,
     required this.onLocationBtnTap,
+    this.transportType,
   }) : super(key: key);
 
   @override
@@ -32,6 +35,8 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
   final GlobalKey _formKey = GlobalKey<FormState>();
 
   bool hasData = false;
+
+  int? selectedIndex;
 
   checkFields() {
     if (widget.locationController.text.trim().isNotEmpty &&
@@ -63,8 +68,42 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
   ];
 
   @override
+  void initState() {
+    // select index based on transport type
+    if (widget.transportType != null) {
+      var type = widget.transportType;
+      switch (type) {
+        case TransportType.bus:
+          selectedIndex =
+              tabItems.indexWhere((element) => element['name'] == 'Bus');
+          break;
+        case TransportType.boat:
+          selectedIndex =
+              tabItems.indexWhere((element) => element['name'] == 'Boat');
+          break;
+        case TransportType.metro:
+          selectedIndex =
+              tabItems.indexWhere((element) => element['name'] == 'Metro');
+          break;
+        default:
+      }
+      print(widget.transportType);
+
+      // selectedIndex = tabItems.indexWhere((item) =>
+      //     item['name'].toString().toLowerCase() ==
+      //     widget.transportType.toString().toLowerCase());
+    } else {
+      selectedIndex = 0;
+    }
+
+    print('selectedIndex: $selectedIndex');
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(
+      initialIndex: selectedIndex ?? 0,
       length: tabItems.length,
       vsync: this,
     );
@@ -75,7 +114,6 @@ class _KLocationSelectWidgetState extends State<KLocationSelectWidget>
       yPadding: 0,
       xMargin: 0,
       yMargin: 10.w,
-      // hasBorder: true,
       borderColor: KColors.primary,
       borderWidth: 1,
       color: Colors.white,

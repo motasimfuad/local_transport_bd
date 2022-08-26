@@ -6,3 +6,7 @@ abstract class CityEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetAllCity extends CityEvent {}
+
+class GetCity extends CityEvent {}

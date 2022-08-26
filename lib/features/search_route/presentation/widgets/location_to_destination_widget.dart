@@ -37,8 +37,9 @@ class LocationToDestinationWidget extends StatelessWidget {
             icon: Icons.location_searching_rounded,
             iconColor: KColors.danger,
             location: locationName,
-            textColor:
-                isLightVersion == true ? KColors.primary.shade100 : textColor,
+            textColor: isLightVersion == true
+                ? (textColor ?? KColors.primary.shade100)
+                : textColor,
             textSize: textSize,
             iconSize: textSize,
           ),
@@ -62,8 +63,9 @@ class LocationToDestinationWidget extends StatelessWidget {
             icon: Icons.my_location_rounded,
             iconColor: KColors.success,
             location: destinationName,
-            textColor:
-                isLightVersion == true ? KColors.primary.shade100 : textColor,
+            textColor: isLightVersion == true
+                ? (textColor ?? KColors.primary.shade100)
+                : textColor,
             textSize: textSize,
             iconSize: textSize,
           ),
